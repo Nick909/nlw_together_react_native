@@ -1,18 +1,39 @@
 import React from 'react';
-import { ImageBackground, Text } from 'react-native';
+import { ImageBackground, Text, View, FlatList } from 'react-native';
 
 import { BorderlessButton } from 'react-native-gesture-handler';
 import { Fontisto } from '@expo/vector-icons';
-
-import { Background } from '../../components/Background';
-import { Header } from '../../components/Header';
 
 import { theme } from '../../global/styles/themes';
 import BannerImg from '../../assets/banner.png';
 import { styles } from './styles';
 
+import { Background } from '../../components/Background';
+import { ListDivider } from '../../components/ListDivider';
+import { ListHeader } from '../../components/ListHeader';
+import { Header } from '../../components/Header';
+import { Member } from '../../components/Member';
+import { ButtonIcon } from '../../components/Buttonicon';
+
+
+
 
 export function AppointmentDetails () {
+
+  const members  = [
+    {
+      id: '1',
+      userName: 'Nicholas',
+      avatar_url: 'https://github.com/Nick909.png',
+      status: 'online',
+    },
+    {
+      id: '2',
+      userName: 'Nicholas',
+      avatar_url: 'https://github.com/Nick909.png',
+      status: 'offline',
+    },
+  ]
   
   return (
     <Background>
@@ -33,16 +54,35 @@ export function AppointmentDetails () {
         source={BannerImg}
         style={styles.banner}
       >
-        <Text style={styles.title}>
-          Lendarios
-        </Text>
+        <View style={styles.bannerContent}>
+          <Text style={styles.title}>
+            Lendarios
+          </Text>
 
-        <Text style={styles.subtitle}>
-          suadfklafkldslf çajsdfççsadjfsdçlkfjklasdflçajsjdfasdkfaçsdkfçasdklaflçsdf lasdfldsf ladsfj
-        </Text>
-
+          <Text style={styles.subtitle}>
+            suadfklafkldslf çajsdfççsadjfsdçlkfjklasdflçajsjdfasdkfaçsdkfçasdklaflçsdf lasdfldsf ladsfj
+          </Text>
+        </View>
       </ImageBackground>
-      
+
+      <ListHeader 
+        title='Jogador 1'
+        subtitle='total 3'
+      />
+
+       <FlatList 
+        data={members}
+        keyExtractor={item => item.id}
+        renderItem={({item}) => (
+          <Member data={item} />
+        )}
+        ItemSeparatorComponent={() => <ListDivider /> }
+        style={styles.members}
+       /> 
+      <View style={styles.footer}>
+        <ButtonIcon title='Entrar no Jogo' />
+      </View>
+
     </Background>
   );
 }
