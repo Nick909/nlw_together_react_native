@@ -5,7 +5,6 @@ import { theme } from '../global/styles/themes';
 
 import { AppointmentDetails } from '../screens/AppointmentDetails';
 import { AppointmentCreate } from '../screens/AppointmentCreate';
-import { SignIn } from '../screens/SingIn';
 import { Home } from '../screens/Home';
 
 
@@ -21,10 +20,6 @@ export function AuthRoutes () {
         }
       }}
     >
-      <Screen 
-        name='SignIn'
-        component={SignIn}
-      />
 
       <Screen 
         name='Home'

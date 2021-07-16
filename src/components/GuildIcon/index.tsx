@@ -11,8 +11,8 @@ export function GuildIcon () {
   
   return <DiscordSvg 
     style={styles.image} 
-    width={64}
-    height={64}
+    width={63}
+    height={67}
   />;
   
   

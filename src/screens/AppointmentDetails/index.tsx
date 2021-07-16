@@ -60,7 +60,7 @@ export function AppointmentDetails () {
           </Text>
 
           <Text style={styles.subtitle}>
-            suadfklafkldslf çajsdfççsadjfsdçlkfjklasdflçajsjdfasdkfaçsdkfçasdklaflçsdf lasdfldsf ladsfj
+          Lorem ipsum dolor sit amet consectetur adipiscing elit, habitant at ornare eget eu bibendum convallis efficitur, pulvinar pharetra tincidunt quisque feugiat purus.
           </Text>
         </View>
       </ImageBackground>
