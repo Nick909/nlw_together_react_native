@@ -10,6 +10,7 @@ import {
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RectButton } from  'react-native-gesture-handler'
+import { useNavigation } from '@react-navigation/core';
 import { Feather } from '@expo/vector-icons';
 import uuid from 'react-native-uuid';
 
@@ -23,12 +24,11 @@ import { CategorySelect } from '../../components/CategorySelect';
 import { Background } from '../../components/Background';
 import { SmallInput } from '../../components/SmallInput';
 import { GuildIcon } from '../../components/GuildIcon';
-import { ModalView } from '../../components/ModalView'
+import { ModalView } from '../../components/ModalView';
 import { TextArea } from '../../components/TextArea';
 import { GuildProps } from '../../components/Guild';
 import { Header } from '../../components/Header';
 import { Button } from '../../components/Button';
-import { useNavigation } from '@react-navigation/core';
 
 
 export function AppointmentCreate () {
@@ -69,7 +69,7 @@ export function AppointmentCreate () {
       date: `${day}/${month} às ${hour}:${minute}h`,
       description,
     };
-
+    
     const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
     const appointments = storage ? JSON.parse(storage) : [];
 
@@ -78,7 +78,7 @@ export function AppointmentCreate () {
       JSON.stringify([...appointments, newAppointment])
     );
 
-    navigation.goBack();
+    navigation.navigate('Home');
 
   };
   
@@ -94,7 +94,6 @@ export function AppointmentCreate () {
 
           <Header 
             title='Agenda Partida'
-      
           />
 
           <Text 

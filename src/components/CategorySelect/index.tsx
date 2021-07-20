@@ -17,7 +17,7 @@ export function CategorySelect ({
   categorySelected, 
   setCategory,
   hasChekedBox = false,
- }:Props) {
+ }: Props ) {
   return (
     <ScrollView
       horizontal

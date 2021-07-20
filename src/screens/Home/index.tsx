@@ -26,14 +26,14 @@ export function Home () {
   const navigation = useNavigation();
 
   
-  function handlerAppointmentDetails () {
-    navigation.navigate('AppointmentDetails');
-  }
-  
   function handlerAppointmentCreate () {
     navigation.navigate('AppointmentCreate');
   }
   
+  function handlerAppointmentDetails (guildSelected: AppointmentProps) {
+    navigation.navigate('AppointmentDetails', { guildSelected });
+  }
+
   function handlerCategorySelect  (categoryId: string) {
     categoryId === category ? setCategory('') : setCategory(categoryId);
   }
@@ -53,7 +53,7 @@ export function Home () {
 
   useFocusEffect(useCallback(() => {
     loadAppointment();
-  }, [] ))
+  }, [category]));
 
   return (
     <Background>
@@ -74,7 +74,7 @@ export function Home () {
         <>
           <ListHeader 
             title='Partidas Agendadas'
-            subtitle='Total 6'
+            subtitle={`Total ${appointment.length}`}
           />
 
           <FlatList 
@@ -83,7 +83,7 @@ export function Home () {
             renderItem={({ item }) => (
               <Appointment 
                 data={ item }
-                onPress={handlerAppointmentDetails} 
+                onPress={() => handlerAppointmentDetails(item)} 
               />
             )}
             
