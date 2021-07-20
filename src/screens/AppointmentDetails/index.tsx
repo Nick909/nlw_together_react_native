@@ -52,7 +52,6 @@ export function AppointmentDetails () {
   async function fetchGuildWidget() {
     try {
       const response = await api.get(`/guilds/${guildSelected.guild.id}/widget.json`);
-      console.log(response.data);
       setWidget(response.data);
 
     } catch  {
